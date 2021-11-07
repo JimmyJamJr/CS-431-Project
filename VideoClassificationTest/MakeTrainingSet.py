@@ -1,6 +1,7 @@
 import csv
 import sys
 import os
+import random
 
 video_folder = sys.argv[1]
 
@@ -15,6 +16,9 @@ for subfolder in os.scandir(video_folder):
                     no_smoke_vids.append(vid.name)
                 elif subfolder.name != "_Dirty":
                     yes_smoke_vids.append(vid.name)
+
+random.shuffle(no_smoke_vids)
+random.shuffle(yes_smoke_vids)
 
 with open("training.csv", 'w') as training_csv:
     writer = csv.writer(training_csv)
