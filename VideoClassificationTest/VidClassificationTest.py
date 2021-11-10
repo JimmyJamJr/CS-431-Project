@@ -11,12 +11,13 @@ import numpy as np
 import imageio
 import cv2
 import os
+import sys
 
-IMG_SIZE = 224
+IMG_SIZE = 128
 BATCH_SIZE = 64
-EPOCHS = 10
+EPOCHS = 20
 
-MAX_SEQ_LENGTH = 20
+MAX_SEQ_LENGTH = 40
 NUM_FEATURES = 2048
 
 train_df = pd.read_csv("training.csv")
@@ -118,8 +119,8 @@ def prepare_all_videos(df, root_dir):
     return (frame_features, frame_masks), labels
 
 
-train_data, train_labels = prepare_all_videos(train_df, "data")
-eval_data, eval_labels = prepare_all_videos(eval_df, "data")
+train_data, train_labels = prepare_all_videos(train_df, sys.argv[1])
+eval_data, eval_labels = prepare_all_videos(eval_df, sys.argv[1])
 
 print(f"Frame features in train set: {train_data[0].shape}")
 print(f"Frame masks in train set: {train_data[1].shape}")

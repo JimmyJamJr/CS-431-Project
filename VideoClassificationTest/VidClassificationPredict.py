@@ -1,3 +1,5 @@
+import sys
+
 from tensorflow import keras
 from imutils import paths
 
@@ -9,11 +11,11 @@ import imageio
 import cv2
 import os
 
-IMG_SIZE = 224
+IMG_SIZE = 128
 BATCH_SIZE = 64
-EPOCHS = 10
+EPOCHS = 20
 
-MAX_SEQ_LENGTH = 20
+MAX_SEQ_LENGTH = 40
 NUM_FEATURES = 2048
 
 def build_feature_extractor():
@@ -96,6 +98,6 @@ def sequence_prediction(path):
     return frames
 
 
-test_video = "GraphTest.mp4"
+test_video = sys.argv[1]
 print(f"Test video path: {test_video}")
 test_frames = sequence_prediction(test_video)

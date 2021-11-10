@@ -14,7 +14,7 @@ for subfolder in os.scandir(video_folder):
             if not vid.name.startswith('.') and os.path.getsize(vid.path) < 100000000:
                 if subfolder.name == "_None":
                     no_smoke_vids.append(vid.name)
-                elif subfolder.name != "_Dirty":
+                elif subfolder.name != "_Dirty" and subfolder.name != "_Low":
                     yes_smoke_vids.append(vid.name)
 
 random.shuffle(no_smoke_vids)
