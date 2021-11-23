@@ -50,7 +50,7 @@ video_folder = sys.argv[1]
 #     for i in range(0, len(videos)):
 #         writer.writerow(videos[i])
 
-EPOCHS = 50
+EPOCHS = 80
 data_paths = []
 labels = []
 
